@@ -21,6 +21,7 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
-  ]
+    "src", "src/icon.d.ts",
+    "babel-plugin-macros.config.js", "babel.config.js"
+  ],
 }
