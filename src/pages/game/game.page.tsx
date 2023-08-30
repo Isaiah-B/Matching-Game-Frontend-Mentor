@@ -16,25 +16,29 @@ function GamePage() {
   return (
     <GamePageContainer>
       <GameHeader />
-      <GameBoard />
 
-      {
-        isSinglePlayer
-          ? <GamePlayersSingleplayer />
-          : <GamePlayersMultiplayer />
-      }
+      <main>
+        <GameBoard />
 
-      {
-        isGameOver && isSinglePlayer
-          ? <GameOverSingleplayer />
-          : null
-      }
+        {
+          isSinglePlayer
+            ? <GamePlayersSingleplayer />
+            : <GamePlayersMultiplayer />
+        }
 
-      {
-        isGameOver && !isSinglePlayer
-          ? <GameOverMultiplayer />
-          : null
-      }
+        {
+          isGameOver && isSinglePlayer
+            ? <GameOverSingleplayer />
+            : null
+        }
+
+        {
+          isGameOver && !isSinglePlayer
+            ? <GameOverMultiplayer />
+            : null
+        }
+      </main>
+
     </GamePageContainer>
   );
 }

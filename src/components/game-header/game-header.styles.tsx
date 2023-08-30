@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Button from '../button/button.component';
 import { MEDIA_SIZES } from '../../index.styles';
 
-export const GameHeaderContainer = styled.div`
+export const GameHeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { MEDIA_SIZES } from '../../index.styles';
 
-export const MenuPageContainer = styled.div`
+export const MenuPageContainer = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
