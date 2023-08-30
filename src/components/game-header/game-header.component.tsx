@@ -11,7 +11,7 @@ import { GameHeaderActions, GameHeaderContainer, MenuButton } from './game-heade
 function GameHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const { restartGame, handleNewGame } = useContext(AppContext);
+  const { restartGame, handleNewGame, setIsPaused } = useContext(AppContext);
   const screenWidth = useScreenWidth();
 
   const isMobile = screenWidth <= 592;
@@ -19,6 +19,16 @@ function GameHeader() {
   const handleRestartGame = () => {
     setMobileMenuOpen(false);
     restartGame();
+  };
+
+  const handleOpenMenu = () => {
+    setMobileMenuOpen(true);
+    setIsPaused(true);
+  };
+
+  const handleResumeGame = () => {
+    setMobileMenuOpen(false);
+    setIsPaused(false);
   };
 
   return (
@@ -29,7 +39,7 @@ function GameHeader() {
           ? (
             <MenuButton
               buttonType="primary"
-              onClick={() => setMobileMenuOpen(true)}
+              onClick={handleOpenMenu}
             >
               Menu
             </MenuButton>
@@ -57,7 +67,7 @@ function GameHeader() {
             ? (
               <Button
                 buttonType="secondary"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={handleResumeGame}
               >
                 Resume Game
               </Button>

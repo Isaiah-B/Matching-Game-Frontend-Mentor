@@ -34,7 +34,12 @@ function PlayerTab({ playerNumber }: { playerNumber: number }) {
 }
 
 export function GamePlayersSingleplayer() {
-  const { isGameOver, singlePlayer, setTimer } = useContext(AppContext);
+  const {
+    isGameOver,
+    isPaused,
+    singlePlayer,
+    setTimer,
+  } = useContext(AppContext);
 
   const { timer, moves } = singlePlayer;
 
@@ -42,15 +47,17 @@ export function GamePlayersSingleplayer() {
 
   useEffect(() => {
     if (!isGameOver) {
-      intervalRef.current = setInterval(() => {
-        setTimer(timer + 1);
-      }, 1000);
+      if (!isPaused) {
+        intervalRef.current = setInterval(() => {
+          setTimer(timer + 1);
+        }, 1000);
+      }
     } else {
       clearInterval(intervalRef.current);
     }
 
     return () => clearInterval(intervalRef.current);
-  }, [isGameOver, timer]);
+  }, [isGameOver, timer, isPaused]);
 
   return (
     <GamePlayersContainer>

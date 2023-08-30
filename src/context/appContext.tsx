@@ -28,6 +28,7 @@ interface AppContextType {
   isRunning: boolean,
   isGameOver: boolean,
   isSinglePlayer: boolean,
+  isPaused: boolean,
 
   setTimer: React.Dispatch<React.SetStateAction<number>>,
   setMoves: React.Dispatch<React.SetStateAction<number>>,
@@ -39,10 +40,11 @@ interface AppContextType {
   setGameTiles: React.Dispatch<React.SetStateAction<number[]>>,
   setSelectedTiles: React.Dispatch<React.SetStateAction<number[]>>,
   setMatchedTiles: React.Dispatch<React.SetStateAction<number[]>>,
-
   setCurrentPlayer: React.Dispatch<React.SetStateAction<number | null>>,
+
   setIsSinglePlayer: React.Dispatch<React.SetStateAction<boolean>>,
   setIsRunning: React.Dispatch<React.SetStateAction<boolean>>,
+  setIsPaused: React.Dispatch<React.SetStateAction<boolean>>,
 
   selectTile: (index: number) => void,
   createBoard: () => void,
@@ -77,6 +79,7 @@ const defaultContext: AppContextType = {
   isSinglePlayer: false,
   isRunning: false,
   isGameOver: false,
+  isPaused: false,
 
   setTimer: () => {},
   setMoves: () => {},
@@ -93,6 +96,7 @@ const defaultContext: AppContextType = {
 
   setIsSinglePlayer: () => {},
   setIsRunning: () => {},
+  setIsPaused: () => {},
 
   selectTile: () => {},
   createBoard: () => {},
@@ -114,6 +118,7 @@ function AppContextProvider({ children }: { children: React.ReactNode }) {
   const [isSinglePlayer, setIsSinglePlayer] = useState(defaultContext.isSinglePlayer);
   const [isRunning, setIsRunning] = useState(defaultContext.isRunning);
   const [isGameOver, setIsGameOver] = useState(defaultContext.isGameOver);
+  const [isPaused, setIsPaused] = useState(defaultContext.isPaused);
 
   const [gameTiles, setGameTiles] = useState(defaultContext.gameTiles);
   const [selectedTiles, setSelectedTiles] = useState(defaultContext.selectedTiles);
@@ -252,6 +257,7 @@ function AppContextProvider({ children }: { children: React.ReactNode }) {
       isSinglePlayer,
       isRunning,
       isGameOver,
+      isPaused,
       setTimer,
       setMoves,
       setTheme,
@@ -264,6 +270,7 @@ function AppContextProvider({ children }: { children: React.ReactNode }) {
       setIsRunning,
       setIsGameOver,
       setIsSinglePlayer,
+      setIsPaused,
       selectTile,
       createBoard,
       shuffleArray,
@@ -284,6 +291,7 @@ function AppContextProvider({ children }: { children: React.ReactNode }) {
     isRunning,
     isGameOver,
     isSinglePlayer,
+    isPaused,
   ]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
