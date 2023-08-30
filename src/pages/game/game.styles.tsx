@@ -8,7 +8,7 @@ export const GamePageContainer = styled.div`
   flex-grow: 1;
 
   width: 111rem;
-  max-height: 73rem;
+  max-height: 90rem;
   margin: 6.8rem auto 7.4rem;
 
   @media ${MEDIA_SIZES.width_1200} {
